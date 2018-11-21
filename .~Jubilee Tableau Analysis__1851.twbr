@@ -767,14 +767,50 @@
               <color column='[federated.18bylsd0stbdrb1e5mu3312bvy9f].[sum:views:qk]' />
             </encodings>
           </pane>
+          <pane id='8' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.18bylsd0stbdrb1e5mu3312bvy9f].[sum:views:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.18bylsd0stbdrb1e5mu3312bvy9f].[sum:views:qk]' />
+            </encodings>
+          </pane>
         </panes>
         <rows>[federated.18bylsd0stbdrb1e5mu3312bvy9f].[none:series:nk]</rows>
-        <cols>([federated.18bylsd0stbdrb1e5mu3312bvy9f].[usr:Calculation_130252609781166085:qk] + ([federated.18bylsd0stbdrb1e5mu3312bvy9f].[usr:Calculation_130252609782960134:qk] + [federated.18bylsd0stbdrb1e5mu3312bvy9f].[sum:estimated_monetized_playbacks:qk]))</cols>
+        <cols>([federated.18bylsd0stbdrb1e5mu3312bvy9f].[usr:Calculation_130252609781166085:qk] + ([federated.18bylsd0stbdrb1e5mu3312bvy9f].[usr:Calculation_130252609782960134:qk] + ([federated.18bylsd0stbdrb1e5mu3312bvy9f].[sum:estimated_monetized_playbacks:qk] + [federated.18bylsd0stbdrb1e5mu3312bvy9f].[sum:views:qk])))</cols>
+      </table>
+    </worksheet>
+    <worksheet name='Sheet 2'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='videodata' name='federated.18bylsd0stbdrb1e5mu3312bvy9f' />
+          </datasources>
+          <datasource-dependencies datasource='federated.18bylsd0stbdrb1e5mu3312bvy9f'>
+            <column caption='% Clicks Per Card Teaser Shown' datatype='real' name='[% clicks_per_card_teaser_shown]' role='measure' type='quantitative' />
+            <column-instance column='[video_title]' derivation='None' name='[none:video_title:nk]' pivot='key' type='nominal' />
+            <column-instance column='[% clicks_per_card_teaser_shown]' derivation='Sum' name='[sum:% clicks_per_card_teaser_shown:qk]' pivot='key' type='quantitative' />
+            <column caption='Video Title' datatype='string' name='[video_title]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[federated.18bylsd0stbdrb1e5mu3312bvy9f].[none:video_title:nk]</rows>
+        <cols>[federated.18bylsd0stbdrb1e5mu3312bvy9f].[sum:% clicks_per_card_teaser_shown:qk]</cols>
       </table>
     </worksheet>
   </worksheets>
   <windows source-height='30'>
-    <window class='worksheet' maximized='true' name='Initial Analysis'>
+    <window class='worksheet' name='Initial Analysis'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -797,6 +833,28 @@
         <edge name='right'>
           <strip size='160'>
             <card pane-specification-id='4' param='[federated.18bylsd0stbdrb1e5mu3312bvy9f].[sum:views:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+    </window>
+    <window class='worksheet' maximized='true' name='Sheet 2'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
           </strip>
         </edge>
       </cards>
